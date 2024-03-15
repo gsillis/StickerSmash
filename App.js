@@ -10,10 +10,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style= {styles.imageContainer}>
-          <ImageViewer placeholderImageSource={PlaceholderImage} />
+        <ImageViewer placeholderImageSource={PlaceholderImage} />
       </View>
       <View style={styles.footerContainer}>
-        <Button label= "Choose a photo" />
+        <Button theme= "primary" label= "Choose a photo" />
         <Button label= "Use this photo" />
       </View>
       <StatusBar style="auto" />
@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#25292e',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageContainer: {
+    flex: 1,
+    paddingTop: 58,
   },
   footerContainer: {
     flex: 1/ 3,
