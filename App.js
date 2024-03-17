@@ -6,19 +6,27 @@ import Button from './components/Buttons';
 import { useState } from 'react';
 import IconButton from './components/IconButton';
 import CircleButton from './components/CircleButton';
+import EmojiPicker from './components/EmojiPicker';
+import EmojiList from './components/EmojiList';
 
 const PlaceholderImage = require('./assets/images/background-image.png')
 
 export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [pickedEmoji, setPickedEmoji] = useState(null);
 
   const onReset = () => {
     setShowAppOptions(false);
   };
 
   const onAddSticker = () => {
+    setIsModalVisible(true);
+  };
 
+  const onModalClose = () => {
+    setIsModalVisible(false);
   };
 
   const onSaveImageAsync = async () => {
@@ -60,6 +68,9 @@ export default function App() {
             <Button label= "Use this photo" onPress={() => setShowAppOptions(true)} />
           </View>
       )}
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+          <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
+      </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
